@@ -1,0 +1,50 @@
+
+<div class="row">
+    <h1 class="text-center text-primary mt-3"><strong>Inscription</strong></h1>
+    <form *ngIf="registerForm" [formGroup]="registerForm" (ngSubmit)="add()" class="offset-md-2 col-md-8 my-5">
+        <div class="row" style="width: 700px; margin-left: 150px;">
+                <div class="mb-2">
+                    <label for="firstName" class="form-label">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Type your first name here" formControlName="firstName" [ngClass]="{'is-valid': submitted && !registerForm.get('firstName')?.errors ,'is-invalid': submitted && registerForm.get('firstName')?.errors}">
+                    <div class="invalid-feedback" *ngIf="submitted && registerForm.get('firstName')?.hasError('required')">
+                        First name is required.
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="lastName" class="form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Type your last name here" formControlName="lastName" [ngClass]="{'is-valid': submitted && !registerForm.get('lastName')?.errors ,'is-invalid': submitted && registerForm.get('lastName')?.errors}">
+                    <div class="invalid-feedback" *ngIf="submitted && registerForm.get('lastName')?.hasError('required')">
+                        Last name is required.
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Type your e-mail here" formControlName="email" [ngClass]="{'is-valid': submitted && !registerForm.get('email')?.errors ,'is-invalid': submitted && registerForm.get('email')?.errors}">
+                    <div class="invalid-feedback" *ngIf="submitted && registerForm.get('email')?.hasError('required')">
+                        E-mail name is required.
+                    </div>
+                    <div class="invalid-feedback" *ngIf="submitted && registerForm.get('email')?.hasError('email')">
+                        E-mail must contain @ char.
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Type your password here" formControlName="password" [ngClass]="{'is-valid': submitted && !registerForm.get('password')?.errors ,'is-invalid': submitted && registerForm.get('password')?.errors}">
+                    <div class="invalid-feedback" *ngIf="submitted && registerForm.get('password')?.hasError('required')">
+                        Password is required.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" >
+                    <i class="fa fa-save"></i> S'inscrire
+                </button>
+        </div>
+        
+         <!-- <div class="row">
+            <button type="button" class="btn btn-primary mb-3" routerLink="/list">
+                <i class="fa fa-arrow-left"></i> Back
+            </button>
+           
+         </div> -->
+    </form>
+</div>
+

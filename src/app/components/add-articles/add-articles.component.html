@@ -1,0 +1,31 @@
+<div class="row">
+    <h1 class="text-center text-primary mt-5"> <strong>Add Article </strong></h1>
+    <form *ngIf="AddArticleForm" [formGroup]="AddArticleForm" (ngSubmit)="addArticle()" class="offset-md-2 col-md-8 my-5">
+       <div class="row" style="width: 700px; margin-left: 150px;">
+            <div class="mb-3">
+               <label for="titre" class="form-label">Title:</label>
+               <input type="text" class="form-control" id="titre" placeholder="Type your title here" formControlName="titre" [ngClass]="{'is-valid': submitted && !AddArticleForm.get('titre')?.errors ,'is-invalid': submitted && AddArticleForm.get('titre')?.errors}">
+               <div class="invalid-feedback" *ngIf="submitted && AddArticleForm.get('titre')?.hasError('required')">
+                  Title is required.
+               </div>
+           </div>
+           <div class="mb-3">
+            <label for="image" class="form-label">Image:</label>
+            <input type="file" class="form-control" id="image" accept="image/*" placeholder="Type your image here" formControlName="image" [ngClass]="{'is-valid': submitted && !AddArticleForm.get('image')?.errors ,'is-invalid': submitted && AddArticleForm.get('image')?.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && AddArticleForm.get('image')?.hasError('required')">
+               Title is required.
+            </div>
+        </div>
+           <div class="mb-3">
+              <label for="article" class="form-label">Article:</label>
+              <textarea class="form-control" id="article" placeholder="Type your article here" formControlName="article" [ngClass]="{'is-valid': submitted && !AddArticleForm.get('article')?.errors ,'is-invalid': submitted && AddArticleForm.get('article')?.errors}"></textarea>
+              <div class="invalid-feedback" *ngIf="submitted && AddArticleForm.get('article')?.hasError('required')">
+                  Article is required.
+              </div>
+           </div>
+           <button type="submit" class="btn btn-success" >
+              <i class="fa fa-save"></i> Add Article
+           </button>
+       </div>
+    </form>
+ </div>

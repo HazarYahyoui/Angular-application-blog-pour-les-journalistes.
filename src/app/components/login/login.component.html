@@ -1,0 +1,28 @@
+
+<div class="row">
+   <h1 class="text-center text-primary mt-5"> <strong>Login</strong></h1>
+   <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="addlog()" class="offset-md-2 col-md-8 my-5">
+      <div class="row" style="width: 700px; margin-left: 150px;">
+           <div class="mb-3">
+              <label for="email" class="form-label">E-mail:</label>
+              <input type="email" class="form-control" id="email" placeholder="Type your e-mail here" formControlName="email" [ngClass]="{'is-valid': submitted && !loginForm.get('email')?.errors ,'is-invalid': submitted && loginForm.get('email')?.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && loginForm.get('email')?.hasError('required')">
+                 E-mail  is required.
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && loginForm.get('email')?.hasError('email')">
+                 E-mail must contain @ char.
+              </div>
+          </div>
+          <div class="mb-3">
+             <label for="password" class="form-label">Password:</label>
+             <input type="password" class="form-control" id="password" placeholder="Type your password here" formControlName="password" [ngClass]="{'is-valid': submitted && !loginForm.get('password')?.errors ,'is-invalid': submitted && loginForm.get('password')?.errors}">
+             <div class="invalid-feedback" *ngIf="submitted && loginForm.get('password')?.hasError('required')">
+                 Password is required.
+             </div>
+          </div>
+          <button type="submit" class="btn btn-success" >
+             <i class="fa fa-save"></i> Login
+          </button>
+      </div>
+   </form>
+</div>
