@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,8 +9,13 @@ import { Router } from '@angular/router';
 export class AuthentificationService {
    email: any; 
   password: any;
+  isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
 
-  constructor(private router:Router) { }
+  isLoggedIn() : Observable<boolean> {
+    return this.isLoginSubject.asObservable();
+  }
+
+  constructor(private route:Router) { }
 
 
   register(data:any){
@@ -20,10 +26,24 @@ export class AuthentificationService {
 
   login(){
     let users = JSON.parse(localStorage.getItem('users') ||'[]');
-    let userFound = users.find((users: any) => users[this.email] === this.email && users[this.password] === this.password);
-    if(userFound!=undefined){
-      console.log(userFound);
-    localStorage.setItem('Conect',JSON.stringify(userFound));
-    }
+    let user = users.find((users: any) => users[this.email] === this.email && users[this.password] === this.password);
+    if(user!=undefined){
+      console.log(user);
+    localStorage.setItem('Conect',JSON.stringify(user));
+    localStorage.setItem('token','JWT');
+    this.route.navigateByUrl('/add-articles')
+    this.isLoginSubject.next(true);
+   }
+  }
+
+  LogoutUser(){
+    localStorage.removeItem("Conect");
+    localStorage.removeItem('token');
+    this.isLoginSubject.next(false);
+    this.route.navigate(['/login'])
+  }
+
+  hasToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

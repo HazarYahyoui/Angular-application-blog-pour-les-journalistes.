@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddArticlesComponent } from './components/add-articles/add-articles.component';
 import { ArticlesComponent } from './components/articles/articles.component';
-import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { Page404Component } from './components/page404/page404.component';
@@ -17,6 +16,7 @@ const routes: Routes = [
   {
     path:'home',
     component: HomeComponent
+    
   },
   {
     path:'articles',
@@ -29,13 +29,6 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
-  },
-  {
-    path: 'login',
-    component: HeaderLoginComponent,
-    children: [
-      { path: '', component: LoginComponent },
-    ]
   },
   {
     path:'register',

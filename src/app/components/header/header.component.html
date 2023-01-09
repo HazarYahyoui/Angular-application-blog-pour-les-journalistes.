@@ -10,31 +10,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" >
           <a class="nav-link btn border-0 fw-bold" aria-current="page" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" >
           <a class="nav-link btn border-0 fw-bold" aria-current="page" routerLink="/articles">Articles</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"  *ngIf="(isLoggedIn | async)">
           <a class="nav-link btn border-0 fw-bold" aria-current="page" routerLink="/add-articles">Add Articles</a>
         </li>
       </ul>
     </div>
     <div>
-      
-        <a class="btn btn-outline rounded mx-2" type="button" style="background-color: white;" routerLink="/login">Login</a>
-        <a class="btn rounded mx-2" type="button" style="background-color: white;" routerLink="/register">Inscription</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+            <a class="nav-link btn border-0 fw-bold btn-outline rounded mx-2 " type="button" style="background-color: white;" routerLink="/login">Login</a>
+          </li>
+         <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+            <a class=" nav-link  btn border-0 fw-bold rounded mx-2" type="button" style="background-color: white;" routerLink="/register">Inscription</a>
+         </li>
+         <li class="nav-item" *ngIf="(isLoggedIn | async)">
+           <a class="nav-link btn border-0 fw-bold " type="button" style="background-color: white;" routerLink="/LogOut" (click)="Logout()" > LogOut</a>
+         </li>
+      </ul>
      
     </div>
   </div>
 </nav>
 
-  <!-- <mat-toolbar color="primary" class="navbar">
-    
-    <div>
-        <a href="#">Home</a>
-        <button>About</button>
-        <span>services</span>
-    </div>
-</mat-toolbar> -->

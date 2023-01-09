@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authentificationservice.login()
-    this.router.navigateByUrl('/add-articles');
+    // this.router.navigateByUrl('/add-articles');
   }
 
 }

@@ -15,10 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ArticlesComponent } from './components/articles/articles.component';
 import { AddArticlesComponent } from './components/add-articles/add-articles.component';
-import { HeaderLoginComponent } from './components/header-login/header-login.component';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +31,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     Page404Component,
     ArticlesComponent,
     AddArticlesComponent,
-    HeaderLoginComponent,
    
   ],
   imports: [
